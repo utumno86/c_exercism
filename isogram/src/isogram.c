@@ -9,16 +9,18 @@ bool is_isogram(const char phrase[])
   {
     return false;
   }
-  char used_chars[] = "";
+  char used_chars[26];
   int len = (int)strlen(phrase);
   for( int i = 0; i < len; i++){
-     for (int j=0; j<i; j++){
-			if (tolower(phrase[i]) == tolower(used_chars[j]))
-      {
-				return false;
-			}
-		}
-     used_chars[i] = tolower(phrase[i]);
+    if( (phrase[i]>='a' && phrase[i]<='z') || (phrase[i]>='A' && phrase[i]<='Z')){
+      used_chars[i] = tolower(phrase[i]);
+      for (int j=0; j<i; j++){
+        if (tolower(phrase[i]) == tolower(used_chars[j]))
+        {
+          return false;
+        }
+      }
+    }
   };
   return true;
 }
