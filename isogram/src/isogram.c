@@ -9,10 +9,10 @@ bool is_isogram(const char phrase[])
   {
     return false;
   }
-  char used_chars[26];
+  char used_chars[26] = { 0 };
   int len = (int)strlen(phrase);
   for( int i = 0; i < len; i++){
-    if( (phrase[i]>='a' && phrase[i]<='z') || (phrase[i]>='A' && phrase[i]<='Z')){
+    if(isalpha(phrase[i])){
       used_chars[i] = tolower(phrase[i]);
       for (int j=0; j<i; j++){
         if (tolower(phrase[i]) == tolower(used_chars[j]))
